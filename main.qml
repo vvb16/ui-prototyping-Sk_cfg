@@ -2,6 +2,7 @@ import QtQuick 2.5
 import QtQuick.Controls 1.4
 import QtQuick.Layouts 1.2
 import QtQuick.Dialogs 1.2
+import CAN.Driver.VCI3 1.0
 
 ApplicationWindow {
     visible: true
@@ -50,7 +51,22 @@ ApplicationWindow {
         text: qsTr("&Go")
         shortcut: StandardKey.Forward
         iconSource: "actionnext.png"
-        onTriggered: console.log("Next action triggered");
+        onTriggered: CANDriver.initialize();
+    }
+
+
+    Connections {
+        target: CANDriver
+        onErrorOccured: {
+            canErrorDialog.informativeText = errorText
+            canErrorDialog.visible = true
+        }
+    }
+
+    MessageDialog {
+        id: canErrorDialog
+        title: qsTr("CAN error")
+        text: qsTr("CAN error occured")
     }
 
     toolBar: ToolBar {
