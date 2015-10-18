@@ -5,6 +5,8 @@ import QtQuick.Layouts 1.2
 SplitView {
     anchors.fill: parent
     orientation: Qt.Horizontal
+    Layout.minimumWidth: 640
+    Layout.minimumHeight: 300
     Item {
         id: possibleDevicesView
         Layout.minimumWidth: 200

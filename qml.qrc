@@ -9,5 +9,6 @@
         <file>PossibleDevicesListModel.qml</file>
         <file>ToolstringEditor.qml</file>
         <file>InitializationView.qml</file>
+        <file>StartView.qml</file>
     </qresource>
 </RCC>

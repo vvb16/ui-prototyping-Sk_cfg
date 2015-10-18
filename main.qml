@@ -5,8 +5,17 @@ import QtQuick.Dialogs 1.2
 import CAN.Driver.VCI3 1.0
 
 ApplicationWindow {
+    id: applicationWindow
     visible: true
     title: qsTr("Hello World")
+
+    onMinimumWidthChanged: {
+        width = Math.max(minimumWidth, 150, width);
+    }
+
+    onMinimumHeightChanged: {
+        height = Math.max(minimumHeight, 150, height);
+    }
 
     menuBar: MenuBar {
         Menu {
@@ -51,7 +60,14 @@ ApplicationWindow {
         text: qsTr("&Go")
         shortcut: StandardKey.Forward
         iconSource: "actionnext.png"
-        onTriggered: CANDriver.initialize();
+        property var srcs: ["StartView.qml", "InitializationView.qml", "ToolstringEditor.qml"]
+        property int current_src_idx: 0
+        onTriggered: {
+            current_src_idx = (current_src_idx+1) % srcs.length;
+            loader.setSource(srcs[current_src_idx]);
+
+            //CANDriver.initialize();
+        }
     }
 
 
@@ -102,11 +118,17 @@ ApplicationWindow {
     Loader {
         id: loader
         anchors.fill: parent
-        Layout.minimumWidth: 640
-        Layout.minimumHeight: 480
-        source: "InitializationView.qml"
-        //source: "ToolstringEditor.qml"
+        source: "StartView.qml"
+//        source: "InitializationView.qml"
+//        source: "ToolstringEditor.qml"
+        onLoaded: {
+            Layout.minimumWidth = item.Layout.minimumWidth;
+            Layout.minimumHeight = item.Layout.minimumHeight;
+//            Layout.preferredWidth = item.Layout.preferredWidth;
+//            Layout.preferredHeight = item.Layout.preferredHeight;
+//            Layout.maximumWidth = item.Layout.maximumWidth;
+//            Layout.maximumHeight = item.Layout.maximumHeight;
+        }
     }
-
 }
 
