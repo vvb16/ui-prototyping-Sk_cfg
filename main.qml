@@ -21,6 +21,9 @@ ApplicationWindow {
         Menu {
             title: qsTr("Файл")
             MenuItem {
+                action: noteNewAction
+            }
+            MenuItem {
                 action: noteOpenAction
             }
             MenuItem {
@@ -40,18 +43,37 @@ ApplicationWindow {
     }
 
     Action {
+        id: noteNewAction
+        text: qsTr("Новая заявка")
+        shortcut: StandardKey.New
+        iconSource: "filenew.png"
+        enabled: true
+        onTriggered: {
+            noteSaveAction.enabled = true;
+            goNextAction.enabled = true;
+            console.log("New action triggered");
+        }
+    }
+
+    Action {
         id: noteOpenAction
-        text: qsTr("Открыть")
+        text: qsTr("Открыть заявку")
         shortcut: StandardKey.Open
         iconSource: "fileopen.png"
-        onTriggered: console.log("Open action triggered");
+        enabled: true
+        onTriggered: {
+            noteSaveAction.enabled = true;
+            goNextAction.enabled = true;
+            console.log("Open action triggered");
+        }
     }
 
     Action {
         id: noteSaveAction
-        text: qsTr("Сохранить")
+        text: qsTr("Сохранить заявку")
         shortcut: StandardKey.Save
         iconSource: "filesave.png"
+        enabled: false
         onTriggered: console.log("Save action triggered");
     }
 
@@ -60,6 +82,7 @@ ApplicationWindow {
         text: qsTr("Далее")
         shortcut: StandardKey.Forward
         iconSource: "actionnext.png"
+        enabled: false
         property var srcs: ["StartView.qml", "InitializationView.qml", "ToolstringEditor.qml"]
         property int current_src_idx: 0
         onTriggered: {
@@ -88,6 +111,9 @@ ApplicationWindow {
     toolBar: ToolBar {
         RowLayout {
             anchors.fill: parent
+            ToolButton {
+                action: noteNewAction
+            }
             ToolButton {
                 action: noteOpenAction
             }

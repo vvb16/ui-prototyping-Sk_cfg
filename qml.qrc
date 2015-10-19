@@ -10,5 +10,6 @@
         <file>ToolstringEditor.qml</file>
         <file>InitializationView.qml</file>
         <file>StartView.qml</file>
+        <file>filenew.png</file>
     </qresource>
 </RCC>
