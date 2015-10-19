@@ -30,17 +30,17 @@ ColumnLayout {
             anchors.fill: parent
             model: foundDevicesListModel
             TableViewColumn {
-                title: qsTr("Tool")
+                title: qsTr("Прибор")
                 role: "name"
                 movable: false
             }
             TableViewColumn {
-                title: qsTr("Serial")
+                title: qsTr("Номер")
                 role: "serial"
                 movable: false
             }
             TableViewColumn {
-                title: qsTr("Test")
+                title: qsTr("Тест")
                 role: "test"
                 movable: false
             }

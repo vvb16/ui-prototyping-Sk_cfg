@@ -3,15 +3,15 @@ import QtQuick 2.5
 ListModel {
     id: possibleDevicesListModel
     ListElement {
-        name: "MP"
+        name: "МП"
         deviceId: 0x10
     }
     ListElement {
-        name: "MB"
+        name: "МБ"
         deviceId: 0x80
     }
     ListElement {
-        name: "IKN"
+        name: "МИГ"
         deviceId: 0x11
     }
 }

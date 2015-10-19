@@ -7,7 +7,7 @@ import CAN.Driver.VCI3 1.0
 ApplicationWindow {
     id: applicationWindow
     visible: true
-    title: qsTr("Hello World")
+    title: qsTr("Конфигуратор")
 
     onMinimumWidthChanged: {
         width = Math.max(minimumWidth, 150, width);
@@ -19,7 +19,7 @@ ApplicationWindow {
 
     menuBar: MenuBar {
         Menu {
-            title: qsTr("File")
+            title: qsTr("Файл")
             MenuItem {
                 action: noteOpenAction
             }
@@ -27,12 +27,12 @@ ApplicationWindow {
                 action: noteSaveAction
             }
             MenuItem {
-                text: qsTr("Exit")
+                text: qsTr("Выход")
                 onTriggered: Qt.quit();
             }
         }
         Menu {
-            title: qsTr("Action")
+            title: qsTr("Действия")
             MenuItem {
                 action: goNextAction
             }
@@ -41,7 +41,7 @@ ApplicationWindow {
 
     Action {
         id: noteOpenAction
-        text: qsTr("&Open")
+        text: qsTr("Открыть")
         shortcut: StandardKey.Open
         iconSource: "fileopen.png"
         onTriggered: console.log("Open action triggered");
@@ -49,7 +49,7 @@ ApplicationWindow {
 
     Action {
         id: noteSaveAction
-        text: qsTr("&Save")
+        text: qsTr("Сохранить")
         shortcut: StandardKey.Save
         iconSource: "filesave.png"
         onTriggered: console.log("Save action triggered");
@@ -57,7 +57,7 @@ ApplicationWindow {
 
     Action {
         id: goNextAction
-        text: qsTr("&Go")
+        text: qsTr("Далее")
         shortcut: StandardKey.Forward
         iconSource: "actionnext.png"
         property var srcs: ["StartView.qml", "InitializationView.qml", "ToolstringEditor.qml"]
@@ -81,8 +81,8 @@ ApplicationWindow {
 
     MessageDialog {
         id: canErrorDialog
-        title: qsTr("CAN error")
-        text: qsTr("CAN error occured")
+        title: qsTr("Ошибка CAN")
+        text: qsTr("Ошибка CAN:")
     }
 
     toolBar: ToolBar {

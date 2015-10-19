@@ -8,6 +8,6 @@ ColumnLayout {
         id: startText
         Layout.alignment: Qt.AlignCenter
         font.pointSize: 18
-        text: qsTr("Choose action")
+        text: qsTr("Выберите действие")
     }
 }

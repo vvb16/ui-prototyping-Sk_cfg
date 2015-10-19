@@ -15,7 +15,7 @@ SplitView {
             anchors.fill: parent
             model: possibleDevicesListModel
             TableViewColumn {
-                title: qsTr("Tool")
+                title: qsTr("Прибор")
                 role: "name"
             }
             onDoubleClicked: {
@@ -33,12 +33,12 @@ SplitView {
             anchors.fill: parent
             model: selectedDevicesListModel
             TableViewColumn {
-                title: qsTr("Tool")
+                title: qsTr("Прибор")
                 role: "name"
                 movable: false
             }
             TableViewColumn {
-                title: qsTr("Serial")
+                title: qsTr("Номер")
                 role: "serial"
                 movable: false
             }
